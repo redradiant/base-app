@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-BaseApp::Application.load_tasks
+Crimson::Application.load_tasks

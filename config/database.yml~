@@ -1,0 +1,45 @@
+mysql: &mysql
+  adapter: "mysql2"
+  username: "<%= ENV['MYSQL_USERNAME'] || "resurgence" %>"
+  password: "<%= ENV['MYSQL_PASSWORD'] || "d3fj89kj289dj" %>"
+  host: "<%= ENV['MYSQL_HOST'] || "alpha.redradiant.com" %>"
+  pool: 5
+  encoding: "utf8"
+
+mongodb: &mongodb
+  host: localhost
+  # slaves:
+  #   - host: slave1.local
+  #     port: 27018
+  #   - host: slave2.local
+  #     port: 27019
+
+development:
+  database: "<%= ENV['MYSQL_DEV_DB'] || "resurgence_dev" %>"
+  <<: *mysql
+
+test:
+  database: "<%= ENV['MYSQL_TEST_DB'] || "resurgence_test" %>"
+  <<: *mysql
+
+production:
+  database: "<%= ENV['MYSQL_PROD_DB'] || "resurgence_prod" %>"
+  <<: *mysql
+
+m_development:
+  <<: *mongodb
+  database: resurgence_dev
+
+m_test:
+  <<: *mongodb
+  database: resurgence_test
+
+# set these environment variables on your prod server
+m_production:
+  <<: *mongodb
+  database: resurgence_prod
+  #host: <%= ENV['MONGOID_HOST'] %>
+  #port: <%= ENV['MONGOID_PORT'] %>
+  #username: <%= ENV['MONGOID_USERNAME'] %>
+  #password: <%= ENV['MONGOID_PASSWORD'] %>
+  #database: <%= ENV['MONGOID_DATABASE'] %>

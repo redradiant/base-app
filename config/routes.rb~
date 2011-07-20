@@ -1,10 +1,6 @@
 Crimson::Application.routes.draw do
 
-  begin
-    devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  rescue Exception => e
-    raise(e) unless Rails.env == "development"
-  end
+  #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get "pages/index"
 

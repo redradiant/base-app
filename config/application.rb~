@@ -1,5 +1,9 @@
 require File.expand_path('../boot', __FILE__)
 
+# This shouldn't be required, but it is...
+require 'yaml'
+YAML::ENGINE.yamler = "syck"
+
 require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
